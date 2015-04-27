@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>微生物說說話</title>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
+		<link rel="stylesheet" href="site.css">
+	</head>
+	<body>
+		<div id="bg" class="background frame">
+			<div class="bg-top"></div>
+			<div class="bg-bot"></div>
+		</div>
+		<div id="filter" class="filter frame"></div>
+		<div class="frame curtain">
+			<div id="index" class="masthead index viewport-height stripe">
+				<div class="visible on lg long stripe"></div>
+				<div class="visible on md short stripe"></div>
+				<div class="ui centered page stackable grid">
+					<div class="ten wide column">
+						<h1 class="ui center aligned massive header">微生物說說話</h1>
+						<div class="ui center aligned header">請幫助微生物們找到他們的物質</div>
+						<div class="visible on md short stripe"></div>
+						<div class="ui blue segment">
+							<div class="ui header">遊戲說明</div>
+							<p>選取你想了解的細菌之後，依照XX的規則，移動他們</p>
+							<p>路上會遇到很多化學物質或其他生物</p>
+							<p>如果想放棄這隻菌或是走完看完結果可以按[回主畫面]</p>
+							<p>長進團，團官己資治在類；度每道！特人布它費會息名。人紙雜何！老步亮強的學……了不毛時形們起語，過星望東人十學熱變他加視反力大保提過不在出在港；黨完他血起音五大，火再為究。<p>時大電社天愛值小，之明沒我，由期排主我實開成早種合以車進間產後義以禮立慢象級下不邊發，上世們熱，現國。<p>物時是朋知數的下不員學作！分一體角！女分那要直。又沒白，子不是續怎母頭以，族無上太物，比際色車飛機；的成上，助天二；友外火國大重、中但稱引。接就經日從不、近行明了前原生人的怕作全車。本得球球中，學一身說張如局發到大花；及聲開大家四通：著能在實吃爭得著下，式無夠學境位角心美南情銷去看花；八然所不是真至人知外是業然，無少究，爾一型。本同器英！國值早不麼健亞的無，生不青，因為飯。有教今得意這字。<p>我羅十完式果進為失覺為保意這！隨密制去賣清跑寶有資愛修遠兩吃好們備但古式才第色自市國一身來是再第簡格上高之口年不的選快心於自人常他水。<p>仍即中的或界為立商明異素德著和它：大家奇而真成，英同運是體賽老該，吃態法縣他分消……常觀地結老起條雨進制五幾實響要力活把。<p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="game" class="masthead game viewport-height stripe">
+				<div class="visible on md short stripe"></div>
+				<h1 id="game_man" class="ui center aligned massive header" data-man="請使用鍵盤上下左右移動細菌" data-done="達成目標！">請從下方選一個細菌</h1>
+				<div id="bacterias" class="ui page five column grid">
+					<!-- <div class="option column" data-objs="#B0,#B1,#water" data-doc="#doc1">
+						<div class="ui card">
+							<a class="image" href="#">
+							<img src="img/fischeri.png">
+							</a>
+							<div class="content">
+								<a class="header">鯢弧菌</a>
+								<div class="meta">
+									<a>點我開始遊戲</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				<div class="visible on md short stripe"></div>
+				<div class="ui page centered one column grid">
+					<div class="sixteen wide column">
+						<div id="gamepad" class="centerized">
+							<img id="game_bg" src="img/background.png" alt="">
+							<!-- <div data-d="#B1" id="B0" class="obj" style="top:10%; left:10%;"></div>
+							<div data-d="#B2" id="B1" class="obj" style="top:20%; left:10%;"></div>
+							<div data-u="#B0" data-pass-to="#water" id="B2" class="obj" style="top:30%; left:10%;"></div>
+							<img data-r="#B1" id="water" class="obj" src="img/water.png" alt="" style="top:20%; left:0%;"> -->
+						</div>
+					</div>
+				</div>
+				<div id="control" class="ui four column centered grid">
+					<div class="column">
+						<h2 class="ui icon centerized header key" data-key="37">
+						<i class="arrow left icon"></i>
+						</h2>
+					</div>
+					<div class="column">
+						<h2 class="ui icon centerized header key" data-key="38">
+						<i class="arrow up icon"></i>
+						</h2>
+					</div>
+					<div class="column">
+						<h2 class="ui icon centerized header key" data-key="40">
+						<i class="arrow down icon"></i>
+						</h2>
+					</div>
+
+					<div class="column">
+						<h2 class="ui icon centerized header key" data-key="39">
+						<i class="arrow right icon"></i>
+						</h2>
+					</div>
+				</div>
+			</div>
+			<div id="doc" class="masthead doc viewport-height stripe">
+				<h1 id="success_msg" class="ui center aligned massive header" style="display:none;">達成目標！</h1>
+				<div class="ui centered page stackable grid">
+					<div id="doc_list" class="ten wide column">
+						<!-- <div id="doc1" class="ui blue document segment">
+							<div class="ui header">遊戲說明</div>
+							<p>選取你想了解的細菌之後，依照XX的規則，移動他們</p>
+							<p>路上會遇到很多化學物質或其他生物</p>
+							<p>如果想放棄這隻菌或是走完看完結果可以按[回主畫面]</p>
+							<p>長進團，團官己資治在類；度每道！特人布它費會息名。人紙雜何！老步亮強的學……了不毛時形們起語，過星望東人十學熱變他加視反力大保提過不在出在港；黨完他血起音五大，火再為究。<p>時大電社天愛值小，之明沒我，由期排主我實開成早種合以車進間產後義以禮立慢象級下不邊發，上世們熱，現國。<p>物時是朋知數的下不員學作！分一體角！女分那要直。又沒白，子不是續怎母頭以，族無上太物，比際色車飛機；的成上，助天二；友外火國大重、中但稱引。接就經日從不、近行明了前原生人的怕作全車。本得球球中，學一身說張如局發到大花；及聲開大家四通：著能在實吃爭得著下，式無夠學境位角心美南情銷去看花；八然所不是真至人知外是業然，無少究，爾一型。本同器英！國值早不麼健亞的無，生不青，因為飯。有教今得意這字。<p>我羅十完式果進為失覺為保意這！隨密制去賣清跑寶有資愛修遠兩吃好們備但古式才第色自市國一身來是再第簡格上高之口年不的選快心於自人常他水。<p>仍即中的或界為立商明異素德著和它：大家奇而真成，英同運是體賽老該，吃態法縣他分消……常觀地結老起條雨進制五幾實響要力活把。<p>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<div id="footer" class="masthead footer stripe">
+				<div class="ui page one column grid">
+					<div id="sponsers" class="centerAligned column">
+						<a target="_blank" href="#" class="ui us image blue label">
+						<img src="">
+						生科系
+						<div class="detail">主辦</div>
+						</a>
+						<a href="mailto:...@gmail.com" class="ui us image blue label">
+						<i class="mail icon"></i>
+						...@gmail.com
+						<div class="detail">使用 Email 聯絡我們</div>
+						</a>
+						<a href="tel:0422840245" class="ui us image blue label">
+						<i class="call icon"></i>
+						(XX)XXXX-XXXX
+						<div class="detail">使用電話聯絡我們</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		<script src='js/jt2html.min.js'></script>
+		<script src='js/site.js'></script>
+		<!-- google analytics -->
+		<script>
+		</script>
+	</body>
+</html>
