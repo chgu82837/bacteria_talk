@@ -221,6 +221,7 @@ h1,h2,h3,h4,h5,h6,p,div,input{
 }
 #game_bg{
     width: 100%;
+    margin: 5% 0 5% 0;
 }
 #gamepad .obj{
     position: absolute;

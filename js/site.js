@@ -37,12 +37,14 @@ jQuery(function() {
                 bacteria = false;
                 console.log("Complete!");
                 setTimeout(function() {
+                    jQuery.scrollTo.window().queue([]).stop();
                     $('body').scrollTo($("#doc"),800);
                 }, 750);
                 return;
             }
             if (next.attr('data-pass-to')) jump(next.attr('data-pass-to'));
             nexts = [next.attr('data-u'), next.attr('data-d'), next.attr('data-l'), next.attr('data-r')];
+            jQuery.scrollTo.window().queue([]).stop();
             $('body').scrollTo($(target),800,{offset: -$(window).height() * 0.4});
         }
         jQuery("#bacterias .option").click(function() {
