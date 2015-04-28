@@ -13,16 +13,9 @@
 }
 
 .bg-top{
-    height:645px;
+    height:700px;
     width:100%;
-    background:url('img/bg-top.png');
-}
-.bg-bot{
-    position:relative;
-    top:-1px;
-    height:408px;
-    width:100%;
-    background:url('img/bg-bot.png');
+    background: url("img/bg-top.png?3") repeat-x scroll 0% 0%;
 }
 
 /* frame & filter */
@@ -167,50 +160,16 @@
 
 /* body */
 body {
-    background:url('img/bg.png');
+    background: 
+    radial-gradient(circle at 100% 50%, transparent 20%, rgba(255,255,255,.3) 21%, rgba(255,255,255,.3) 34%, transparent 35%, transparent),
+    radial-gradient(circle at 0% 50%, transparent 20%, rgba(255,255,255,.3) 21%, rgba(255,255,255,.3) 34%, transparent 35%, transparent) 0 -50px;
+    background-color: #5EC3E4;
+    background-size:75px 100px;
     /*margin: 0;*/
 }
 /* font */
 h1,h2,h3,h4,h5,h6,p,div,input{
     font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif !important;
-}
-
-/* input */
-div.recruit-input{
-    width: 80%;
-    margin-top: 20px;
-}
-div.ui.transparent.underlined.input{
-    border-bottom: 2px #422B09 groove;
-}
-.ui.transparent.underlined.input input{
-    color: white;
-}
-.ui.transparent.underlined.input ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #E6E974;
-}
-.ui.transparent.underlined.input :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #E6E974;
-    opacity:  1;
-}
-.ui.transparent.underlined.input ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #E6E974;
-    opacity:  1;
-}
-.ui.transparent.underlined.input :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #E6E974;
-}
-
-/* uploader */
-#shown-has-img{
-    display: none;
-}
-.ui.button.fluid{
-    margin-bottom: 5px;
-}
-.ui.inverted.cus-orange.segment{
-    background-color: rgba(88, 90, 0, 0.51) !important;
-    color: #FFF !important;
 }
 
 /* some small fix */
@@ -225,9 +184,6 @@ div.ui.transparent.underlined.input{
     transition: color 0.5s,opacity 0.5s;
     cursor:pointer;
 
-}
-#control #to-top{
-    display: none !important;
 }
 #control h2:hover .header,#control h2:hover .content,#control h2:hover i{
     color: white !important;
@@ -257,13 +213,9 @@ div.ui.transparent.underlined.input{
 }
 
 /* game */
-#bacterias .option{
-    
-}
 #gamepad{
     position: relative;
     max-width: 800px;
-    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 5px #888;
 }
@@ -275,7 +227,7 @@ div.ui.transparent.underlined.input{
     transition:left 1s,top 1s;
     top: 0%;
     left: 0%;
-    width: 15%;
+    width: 12.5%;
 }
 
 #gamepad #bacteria.obj{

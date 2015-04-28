@@ -13,7 +13,6 @@ jQuery(function() {
     function game_init(){
         var gamepad = jQuery("#gamepad");
         var bacteria = false;
-        var allow_keydown = false;
         var objs, nexts;
 
         function remove(target, destroy) {
@@ -24,7 +23,6 @@ jQuery(function() {
         }
 
         function jump(target) {
-            allow_keydown = false;
             var next = jQuery(target);
             bacteria.attr("style", next.attr('style'));
             var complete_obj = objs.indexOf(target);
@@ -38,13 +36,14 @@ jQuery(function() {
                 remove(bacteria, true);
                 bacteria = false;
                 console.log("Complete!");
+                setTimeout(function() {
+                    $('body').scrollTo($("#doc"),800);
+                }, 750);
                 return;
             }
             if (next.attr('data-pass-to')) jump(next.attr('data-pass-to'));
             nexts = [next.attr('data-u'), next.attr('data-d'), next.attr('data-l'), next.attr('data-r')];
-            setTimeout(function() {
-                allow_keydown = true;
-            }, 750);
+            $('body').scrollTo($(target),800,{offset: -$(window).height() * 0.4});
         }
         jQuery("#bacterias .option").click(function() {
             var self = jQuery(this);
@@ -69,7 +68,7 @@ jQuery(function() {
         });
         function keydown(e){
             // console.log(e.which);
-            if (allow_keydown) {
+            if (bacteria) {
                 switch (e.which) {
                     case 37: // left
                         if (nexts[2]) jump(nexts[2]);
@@ -93,6 +92,8 @@ jQuery(function() {
             e.which = parseInt(jQuery(this).attr('data-key'));
             keydown(e);
         });
+
+        gamepad.find(".dimmer").removeClass('active');
     }
 
     var completed = 0;
