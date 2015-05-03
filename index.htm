@@ -6,7 +6,7 @@
 		<title>微生物說說話</title>
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-		<link rel="stylesheet" href="site.css?2">
+		<link rel="stylesheet" href="site.css?3">
 	</head>
 	<body>
 		<div id="bg" class="background frame">
@@ -22,18 +22,12 @@
 						<h1 class="ui center aligned massive header">微生物說說話</h1>
 						<div class="ui center aligned header">請幫助微生物們找到他們的物質</div>
 						<div class="visible on md short stripe"></div>
-						<div class="ui blue segment">
+						<div class="ui blue doc segment">
 							<div class="ui header">遊戲說明</div>
 							<p>請先從下方選擇你想了解的微生物。</p>
 							<p>選取你想了解的微生物之後，就可以使用鍵盤上下左右或點選畫面上的箭頭移動你的微生物囉！</p>
 							<p>路上會遇到很多化學物質或其他生物，碰到正確的物質才會起反應哦～</p>
-							<p>如果想放棄這隻微生物直接觀看結果請直接往下捲動即可。</p>
-							<p>途徑簡要解釋</p>
-							<p>念珠菌　　　→ PQs → PQs → PQs → PQs → 減少製造生物膜</p>
-							<p>鯢弧菌　　　→ 烏賊(發光) → AHI → AHI → AHI → 水(減少發光)</p>
-							<p>枯草桿菌　　→ AIP → AIP → AIP → AIP → 形成內孢子</p>
-							<p>格登鏈球菌　→ AI-2 → 牙齦口卜口林菌 → AI-2 → AI-2 → 生物膜融合</p>
-							<p>根棲細菌　　→ IAA → IAA → IAA → 抑制病原菌生長</p>
+							<p>如果想放棄這隻微生物直接觀看結果請直接按下『放棄』即可。</p>
 						</div>
 					</div>
 				</div>
@@ -93,6 +87,8 @@
 						</h2>
 					</div>
 				</div>
+				<div id="giveup_container" class="ui one column centered page grid" style="display:none;"><div class="column"><div id="giveup" class="negative centerized ui button">放棄</div></div></div>
+				
 			</div>
 			<div id="doc" class="masthead doc viewport-height stripe">
 				<h1 id="success_msg" class="ui center aligned massive header" style="display:none;">達成目標！</h1>
@@ -111,6 +107,7 @@
 			<div id="footer" class="masthead footer stripe">
 				<div class="ui page one column grid">
 					<div id="sponsers" class="centerAligned column">
+						
 						<a target="_blank" href="#" class="ui us image green label">
 						<img src="">
 						生科系
@@ -128,13 +125,40 @@
 						</a>
 					</div>
 				</div>
+				<audio id="audio_player" class="centerized" style="display:none;">
+					<source src="audio/horse.ogg" type="audio/ogg">
+					<source src="audio/horse.mp3" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
 			</div>
 		</div>
 		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"></script>
 		<script src='js/jt2html.min.js'></script>
-		<script src='js/site.js?2'></script>
+		<script>
+			var game_callback = {
+				squid_light:function(obj){
+					if(obj.is("#squid")){
+						obj.addClass('light');
+						return false;
+					}
+					else jQuery("#squid").removeClass("light");
+				}
+			};
+		</script>
+		<style>
+			.light{
+				background: -moz-radial-gradient(center, ellipse cover, rgba(251,255,50,1) 0%, rgba(232,242,114,0) 74%, rgba(225,237,137,0) 100%); /* FF3.6+ */
+				background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(251,255,50,1)), color-stop(74%,rgba(232,242,114,0)), color-stop(100%,rgba(225,237,137,0))); /* Chrome,Safari4+ */
+				background: -webkit-radial-gradient(center, ellipse cover, rgba(251,255,50,1) 0%,rgba(232,242,114,0) 74%,rgba(225,237,137,0) 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-radial-gradient(center, ellipse cover, rgba(251,255,50,1) 0%,rgba(232,242,114,0) 74%,rgba(225,237,137,0) 100%); /* Opera 12+ */
+				background: -ms-radial-gradient(center, ellipse cover, rgba(251,255,50,1) 0%,rgba(232,242,114,0) 74%,rgba(225,237,137,0) 100%); /* IE10+ */
+				background: radial-gradient(ellipse at center, rgba(251,255,50,1) 0%,rgba(232,242,114,0) 74%,rgba(225,237,137,0) 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbff32', endColorstr='#00e1ed89',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+			}
+		</style>
+		<script src='js/site.js?3'></script>
 		<!-- google analytics -->
 		<script>
 		</script>

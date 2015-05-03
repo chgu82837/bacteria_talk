@@ -1,5 +1,6 @@
 var debug;
 jQuery(function() {
+    if(typeof game_callback === "undefined") game_callback = {};
     function scroll(){
         var control_dis = $(document).scrollTop() - $("#game").position().top;
         var window_height = $("#game").height() * 0.8;
@@ -13,13 +14,39 @@ jQuery(function() {
     function game_init(){
         var gamepad = jQuery("#gamepad");
         var bacteria = false;
-        var objs, nexts;
+        var objs, nexts, doc_tar, playing;
+
+        function show_doc(){
+            jQuery('.presented').removeClass('presented');
+            var doc = jQuery(doc_tar);
+            doc.addClass("presented");
+            playing = doc.find('.audio_player');
+            if(playing.is('audio')){
+                playing = playing.get()[0];
+                playing.play();
+            }
+            else playing = false;
+            jQuery("#giveup_container").slideUp();
+            setTimeout(function() {
+                jQuery.scrollTo.window().queue([]).stop();
+                $('body').scrollTo($("#doc"),800);
+            }, 750);
+            // jQuery(doc_tar).find('')
+        }
 
         function remove(target, destroy) {
-            target = jQuery(target).addClass('bounceOut').addClass("animated");
-            setTimeout(function() {
-                if (destroy) target.remove();
-            }, 1000);
+            target = jQuery(target);
+            var callback_name = target.attr('data-callback');
+            var callback_val;
+            if(callback_name)
+                if(game_callback[callback_name]) callback_val = game_callback[callback_name](target);
+            if(callback_val !== false)
+                target.addClass('bounceOut').addClass("animated");
+            if (destroy){
+                setTimeout(function() {
+                    target.remove();
+                }, 1000);
+            }
         }
 
         function jump(target) {
@@ -36,10 +63,8 @@ jQuery(function() {
                 remove(bacteria, true);
                 bacteria = false;
                 console.log("Complete!");
-                setTimeout(function() {
-                    jQuery.scrollTo.window().queue([]).stop();
-                    $('body').scrollTo($("#doc"),800);
-                }, 750);
+                show_doc();
+
                 return;
             }
             if (next.attr('data-pass-to')) jump(next.attr('data-pass-to'));
@@ -61,13 +86,18 @@ jQuery(function() {
             bacteria = self.find('img').clone().attr('id', 'bacteria').addClass("obj").addClass("bounceIn").addClass("animated");
             gamepad.append(bacteria);
             objs = self.attr('data-objs').split(",");
+            doc_tar = self.attr('data-doc');
             jQuery('.presented').removeClass('presented');
-            jQuery(self.attr('data-doc')).addClass("presented");
-            jQuery("#game_man").text(jQuery("#game_man").attr('data-man'))
+            jQuery("#giveup_container").slideDown();
+            jQuery("#game_man").text(jQuery("#game_man").attr('data-man'));
             jQuery("#success_msg").hide();
+            if(playing){
+                playing.load();
+            }
             jump(objs[0]);
             return false;
         });
+        jQuery("#giveup").click(show_doc);
         function keydown(e){
             // console.log(e.which);
             if (bacteria) {
@@ -80,14 +110,14 @@ jQuery(function() {
                         break;
                     case 38: // up
                         if (nexts[0]) jump(nexts[0]);
-                        break;
+                        e.preventDefault();
+                        return false;
                     case 40: // down
                         if (nexts[1]) jump(nexts[1]);
-                        break;
+                        e.preventDefault();
+                        return false;
                 }
             }
-            e.preventDefault();
-            return false;
         }
         jQuery('body').keydown(keydown);
         jQuery('#control .key').click(function(e){
@@ -111,8 +141,8 @@ jQuery(function() {
 
     JT2html({
      body:'@{node}@{img}',
-     node:'<div data-u="@{upto}" data-d="@{downto}" data-l="@{leftto}" data-r="@{rightto}" id="@{id}" class="obj" style="top:@{top}%; left:@{left}%;"></div>',
-     img:'<img data-u="@{upto}" data-d="@{downto}" data-l="@{leftto}" data-r="@{rightto}" id="@{id}" class="obj" style="top:@{top}%; left:@{left}%;" src="@{src}">'
+     node:'<div data-u="@{upto}" data-d="@{downto}" data-l="@{leftto}" data-r="@{rightto}" id="@{id}" class="obj" style="top:@{top}%; left:@{left}%;" data-callback="@{callback}"></div>',
+     img:'<img data-u="@{upto}" data-d="@{downto}" data-l="@{leftto}" data-r="@{rightto}" id="@{id}" class="obj" style="top:@{top}%; left:@{left}%;" src="@{src}" data-callback="@{callback}">'
     }).fromGS('https://spreadsheets.google.com/feeds/list/1OMg92dDapfNY1GyipvbMdIhHvja0pZRySkl3u3XBO-I/2/public/values?alt=json',function(html){
         jQuery("#gamepad").append(html);
         completed++
@@ -121,8 +151,9 @@ jQuery(function() {
 
     JT2html({
      body:'@{}',
-     "":'<div id="@{id}" class="ui @{color} document segment"><div class="ui header">@{text}</div>@{p}</div>',
-     p:"<p>@{text}</p>"
+     "":'<div id="@{id}" class="ui @{color} doc document segment"><div class="ui header">@{text}</div>@{p}@{audio}</div>',
+     p:"<p>@{text}</p>",
+     audio:'<audio class="audio_player" style="display:none;"><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>'
     }).fromGS('https://spreadsheets.google.com/feeds/list/1OMg92dDapfNY1GyipvbMdIhHvja0pZRySkl3u3XBO-I/3/public/values?alt=json',function(html){
         jQuery("#doc_list").append(html);
         completed++
