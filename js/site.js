@@ -1,10 +1,11 @@
 var debug;
 jQuery(function() {
     if(typeof game_callback === "undefined") game_callback = {};
+    var window_height_top = $("#game").height() * -0.4;
+    var window_height_bot = $("#game").height() * 0.8;
     function scroll(){
         var control_dis = $(document).scrollTop() - $("#game").position().top;
-        var window_height = $("#game").height() * 0.8;
-        if(control_dis > 0 && control_dis < window_height)
+        if(control_dis > window_height_top && control_dis < window_height_bot)
             $("#control").addClass("menued");
         else
             $("#control").removeClass("menued");
