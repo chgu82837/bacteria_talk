@@ -92,6 +92,7 @@ jQuery(function() {
             jQuery("#giveup_container").slideDown();
             jQuery("#game_man").text(jQuery("#game_man").attr('data-man'));
             jQuery("#success_msg").hide();
+            for(cb in game_callback) game_callback[cb](null,true);
             if(playing){
                 playing.load();
             }
@@ -154,7 +155,7 @@ jQuery(function() {
      body:'@{}',
      "":'<div id="@{id}" class="ui @{color} doc document segment"><div class="ui header">@{text}</div>@{p}@{audio}</div>',
      p:"<p>@{text}</p>",
-     audio:'<audio class="audio_player" style="display:none;"><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>'
+     audio:'<audio class="audio_player" controls><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>'
     }).fromGS('https://spreadsheets.google.com/feeds/list/1OMg92dDapfNY1GyipvbMdIhHvja0pZRySkl3u3XBO-I/3/public/values?alt=json',function(html){
         jQuery("#doc_list").append(html);
         completed++
