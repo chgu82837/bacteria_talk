@@ -35,7 +35,7 @@ jQuery(function() {
             // jQuery(doc_tar).find('')
         }
 
-        function remove(target, destroy) {
+        function touch(target, destroy) {
             target = jQuery(target);
             var callback_name = target.attr('data-callback');
             var callback_val;
@@ -55,13 +55,13 @@ jQuery(function() {
             bacteria.attr("style", next.attr('style'));
             var complete_obj = objs.indexOf(target);
             if (complete_obj != -1) {
-                remove(target);
+                touch(target);
                 objs.splice(complete_obj, 1);
             }
             if (!objs.length){ // game ok
                 jQuery("#game_man").text(jQuery("#game_man").attr('data-done'));
                 jQuery("#success_msg").show();
-                remove(bacteria, true);
+                touch(bacteria, true);
                 bacteria = false;
                 console.log("Complete!");
                 show_doc();
@@ -76,7 +76,7 @@ jQuery(function() {
         jQuery("#bacterias .option").click(function() {
             var self = jQuery(this);
             if (bacteria){
-                remove(bacteria, true);
+                touch(bacteria, true);
                 bacteria = false;
             }
             var bounceOuted = gamepad.find(".bounceOut.animated:not(#bacteria)");
