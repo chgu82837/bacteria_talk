@@ -40,14 +40,18 @@
     z-index: 3;
 }
 /* stript and filter color */
-.index.stripe .header,.index.stripe h1,.index.stripe h2,.index.stripe h3,.index.stripe h4,.index.stripe h5,.index.stripe i,.index{
+.index.stripe .header{
+    color: #FFD633 !important;
+    text-shadow: 0px 0px 1px #3399FF, 0px 0px 1px #3399FF, 0px 0px 1px #3399FF, 0px 0px 1px #3399FF, 0px 0px 1px #3399FF;
+}
+.index.stripe h1,.index.stripe h2,.index.stripe h3,.index.stripe h4,.index.stripe h5,.index.stripe i,.index{
     color: #060050 !important;
-    text-shadow: 0px 0px 20px #909090;
+    
 }
 
 .game.stripe .header,.game.stripe h1,.game.stripe h2,.game.stripe h3,.game.stripe h4,.game.stripe h5,.game.stripe i{
-    color: #008984 !important;
-    text-shadow: 0px 0px 20px #FFF;
+    color: #FF6699 !important;
+    text-shadow: 0px 0px 8px #FFFFCC;
 }
 .frame.filter.game{
     background: rgba(86, 237, 255, 0.31);
