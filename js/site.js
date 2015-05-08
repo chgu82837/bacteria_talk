@@ -153,7 +153,7 @@ jQuery(function() {
 
     JT2html({
      body:'@{}',
-     "":'<div id="@{id}" class="ui @{color} doc document segment"><div class="ui header">@{text}</div>@{p}@{audio}</div>',
+     "":'<div id="@{id}" class="ui @{color} doc document segment"><div class="ui header">@{text}</div>@{p}@{img}@{audio}</div>',
      p:"<p>@{text}</p>",
      audio:'<audio class="audio_player" controls><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>',
      img:'<img src="@{src}" alt="@{text}">'
