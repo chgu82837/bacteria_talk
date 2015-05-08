@@ -155,7 +155,8 @@ jQuery(function() {
      body:'@{}',
      "":'<div id="@{id}" class="ui @{color} doc document segment"><div class="ui header">@{text}</div>@{p}@{audio}</div>',
      p:"<p>@{text}</p>",
-     audio:'<audio class="audio_player" controls><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>'
+     audio:'<audio class="audio_player" controls><source src="@{src}.ogg" type="audio/ogg"><source src="@{src}.mp3" type="audio/mpeg"></audio>',
+     img:'<img src="@{src}" alt="@{text}">'
     }).fromGS('https://spreadsheets.google.com/feeds/list/1OMg92dDapfNY1GyipvbMdIhHvja0pZRySkl3u3XBO-I/3/public/values?alt=json',function(html){
         jQuery("#doc_list").append(html);
         completed++
